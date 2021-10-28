@@ -4,16 +4,18 @@ function index(req, res) {
   skillDb.find({}, function(error, skills) {
     res.render('skills/index', {
       skills: skills,
-      error: error
+      error: error,
+      time: req.time,
     })
   })
 }
 
 function show(req, res) {
+  console.log(req.time)
   skillDb.findById(req.params.id, function(error, skill) {
     res.render('skills/show', {
       skill: skill,
-      error: error
+      error: error,
     })
   })
 }

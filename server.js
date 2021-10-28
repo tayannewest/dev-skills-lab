@@ -19,6 +19,13 @@ app.set(
 )
 app.set('view engine', 'ejs')
 
+// do-nothing practice function
+app.use(function(req, res, next) {
+  console.log('Hello SEI!')
+  req.time = new Date().toLocaleTimeString()
+  next()
+})
+
 // middleware
 app.use(logger('dev'))
 app.use(express.json())
@@ -49,6 +56,8 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500)
   res.render('error')
 })
+
+
 
 export {
   app
